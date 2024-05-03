@@ -14,7 +14,13 @@ $(document).ready(function() {
 
     $("#languages").autocomplete({
         source: programmingLanguages,
-
+        minLength: 0, 
+        select: function(event, ui) {
+            $("#languages").val(ui.item.value); 
+            return false;
+        }
+    }).focus(function() {
+        $(this).autocomplete("search", "");
     });
 });
 
